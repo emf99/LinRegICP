@@ -1,0 +1,27 @@
+{
+  "canisters": {
+    "CYBP_backend": {
+      "candid": "src/CYBP_backend/CYBP_backend.did",
+      "package": "CYBP_backend",
+      "type": "rust"
+    },
+    "CYBP_frontend": {
+      "dependencies": [
+        "CYBP_backend"
+      ],
+      "source": [
+        "src/CYBP_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "CYBP_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

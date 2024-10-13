@@ -1,0 +1,5 @@
+[workspace]
+members = [
+    "src/CYBP_backend"
+]
+resolver = "2"
