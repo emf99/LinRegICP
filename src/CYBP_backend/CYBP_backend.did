@@ -1,3 +1,21 @@
+type HttpHeader = record { value : text; name : text };
+type HttpResponse = record {
+  status : nat;
+  body : blob;
+  headers : vec HttpHeader;
+};
+type RegressionOutput = record {
+  intercept : float64;
+  parameters : vec record { text; float64 };
+};
+type Response = record { timestamp : int64 };
+type Result = variant {
+  Ok : record { RegressionOutput; opt float64 };
+  Err : text;
+};
+type TransformArgs = record { context : blob; response : HttpResponse };
 service : {
-    "greet": (text) -> (text) query;
+  date_to_unix_timestamp : (text) -> (Response);
+  get_icp_usd_prices : (opt text) -> (Result);
+  transform : (TransformArgs) -> (HttpResponse) query;
 }
